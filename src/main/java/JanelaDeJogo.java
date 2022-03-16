@@ -15,8 +15,13 @@ public class JanelaDeJogo extends JFrame{
         // Criar e adicionar os botões à janela
         for (int linha = 0; linha < altura; ++linha) {
             for (int coluna = 0; coluna < largura; ++coluna) {
-                JButton btn = new JButton();
+//                JButton btn = new JButton();
+                BotaoCampoMinado btn = new BotaoCampoMinado();
+                /* Serve só para testar o comportamento */
                 btn.setText("C"+coluna+ " L"+linha);
+                btn.setEstado(linha);
+
+
                 painelJogo.add(btn);
             }
         }
@@ -30,7 +35,7 @@ public class JanelaDeJogo extends JFrame{
         setContentPane(painelJogo);
         // Destrói esta janela, removendo-a completamente da memória.
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        pack(); //ainda nao faz nada pq ainda nao se tem nenhum controlo dentro da vista
+        pack(); //de inicio nao faz nada pq ainda nao se tem nenhum controlo dentro da vista
         //setVisible(true); // opcional. Pode optar por fazer depois. -> fez-se na classe MinesFinder
     }
 }
