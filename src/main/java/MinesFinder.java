@@ -25,6 +25,15 @@ public class MinesFinder extends JFrame {
 //            }
 //        });
 
+        jogoFácilButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var janela = new JanelaDeJogo();
+
+
+            }
+        });
+
     }
 
     private void sairButtonActionPerformed(ActionEvent e){
