@@ -25,17 +25,11 @@ public class MinesFinder extends JFrame {
 //            }
 //        });
 
-
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                var janela = new JanelaDeJogo();
-//
-//
-//            }
-
         btnFacil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                var janela = new JanelaDeJogo("Jogo Fácil");
+                janela.setVisible(true);
 
             }
         });
@@ -43,6 +37,8 @@ public class MinesFinder extends JFrame {
         btnMedio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                var janela = new JanelaDeJogo("Jogo Médio");
+                janela.setVisible(true);
 
             }
         });
@@ -50,6 +46,8 @@ public class MinesFinder extends JFrame {
         btnDificil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                var janela = new JanelaDeJogo("Jogo Difícil");
+                janela.setVisible(true);
 
             }
         });
@@ -64,5 +62,5 @@ public class MinesFinder extends JFrame {
 
     }
 
-    public static void main(String[] args) { new MinesFinder("Mines Finder").setVisible(true); }
+    public static void main(String[] args) { new MinesFinder("Mines Finder").setVisible(true); } //é preciso fazer setVisible para tornar a janela visivel
 }
