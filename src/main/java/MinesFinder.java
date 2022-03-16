@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 public class MinesFinder extends JFrame {
 
     private JPanel painelPrincipal;
-    private JButton jogoFácilButton;
-    private JButton jogoMédioButton;
-    private JButton jogoDifícilButton;
+    private JButton btnFacil;
+    private JButton btnMedio;
+    private JButton btnDificil;
     private JButton sairButton;
 
     public MinesFinder(String title) {
@@ -25,11 +25,31 @@ public class MinesFinder extends JFrame {
 //            }
 //        });
 
-        jogoFácilButton.addActionListener(new ActionListener() {
+
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                var janela = new JanelaDeJogo();
+//
+//
+//            }
+
+        btnFacil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var janela = new JanelaDeJogo();
 
+            }
+        });
+
+        btnMedio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        btnDificil.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         });
@@ -38,6 +58,10 @@ public class MinesFinder extends JFrame {
 
     private void sairButtonActionPerformed(ActionEvent e){
         System.exit(0); //é o que vai acontecer quando carregar no botão
+    }
+
+    private void btnFacilActionPerformed(ActionEvent e){
+
     }
 
     public static void main(String[] args) { new MinesFinder("Mines Finder").setVisible(true); }
