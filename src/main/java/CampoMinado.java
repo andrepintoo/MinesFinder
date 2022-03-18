@@ -17,6 +17,8 @@ public class CampoMinado {
     private boolean primeiraJogada;
     private boolean jogadorDerrotado;
     private boolean jogoTerminado;
+    private long instanteInicioJogo;
+    private long duracaoJogo;
 
     public CampoMinado(int largura, int altura, int numMinas) {
         this.largura = largura;
@@ -33,7 +35,7 @@ public class CampoMinado {
         jogoTerminado = false;
         jogadorDerrotado = false;
     }
-//x -> coluna ?
+
     public void revelarQuadricula(int x, int y) { //FALTA
         if (jogoTerminado || estado[x][y] < TAPADO) {
             return;
@@ -41,25 +43,64 @@ public class CampoMinado {
         if(primeiraJogada){
             primeiraJogada = false;
             colocarMinas(x,y);
+
+            instanteInicioJogo = System.currentTimeMillis();
         }
 
-        // Faz aqui qualquer coisa...
-        if (hasMina(x,y)){
+//        if (hasMina(x,y)){
+        if (minas[x][y]){
             estado[x][y] = REBENTADO;
             jogadorDerrotado = true;
             jogoTerminado = true;
-        }
 
-        int minasVizinhas = contarMinasVizinhas(x,y);
-        if(minasVizinhas == 0){
-            estado[x][y] = VAZIO;
-            revelarQuadriculasVizinhas(x,y);
+            duracaoJogo = System.currentTimeMillis() - instanteInicioJogo;
         }else{
-            estado[x][y] = minasVizinhas;
+            int minasVizinhas = contarMinasVizinhas(x,y);
+            if(minasVizinhas == 0){
+                estado[x][y] = VAZIO;
+                revelarQuadriculasVizinhas(x,y);
+            }else{
+                estado[x][y] = minasVizinhas;
+            }
+            if(isVitoria()){
+                jogoTerminado = true;
+                jogadorDerrotado = false;
+
+                duracaoJogo = System.currentTimeMillis() - instanteInicioJogo;
+            }
         }
     }
+
     private void revelarQuadriculasVizinhas(int x, int y){
 
+    }
+
+    public long getDuracaoJogo(){
+        if (primeiraJogada) {
+            return 0;
+        }
+        if (!jogoTerminado) { //entra neste if caso não se acabe o jogo?
+            return System.currentTimeMillis() - instanteInicioJogo;
+        }
+        return duracaoJogo;
+    }
+
+    public void marcarComoTendoMina(int x, int y){
+        if(estado[x][y] == TAPADO || estado[x][y] == DUVIDA){
+            estado[x][y] = MARCADO;
+        }
+    }
+
+    public void marcarComoSuspeita(int x, int y){
+        if(estado[x][y] == TAPADO || estado[x][y] == MARCADO){
+            estado[x][y] = DUVIDA;
+        }
+    }
+
+    public void desmarcarQuadricula(int x, int y){
+        if(estado[x][y] == MARCADO || estado[x][y] == DUVIDA){
+            estado[x][y] = TAPADO;
+        }
     }
 
     private int contarMinasVizinhas(int x, int y) { //FALTA
@@ -110,4 +151,16 @@ public class CampoMinado {
     public boolean isJogoTerminado() {
         return jogoTerminado;
     }
+
+    private boolean isVitoria() {
+        for (int i = 0; i < largura; ++i) {
+            for (var j = 0 ; j < altura; ++j) {
+                if (!minas[i][j] && estado[i][j] >= TAPADO) { //se houver alguma botao sem mina que ainda esteja tapado, ainda não se ganhou
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
