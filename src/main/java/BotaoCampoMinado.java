@@ -3,9 +3,13 @@ import java.awt.*;
 
 public class BotaoCampoMinado extends JButton {
     private int estado;
+    private int linha; //para saber em que linha e coluna se encontra o botao
+    private int coluna;
 
-    public BotaoCampoMinado(){
+    public BotaoCampoMinado(int linha, int coluna){
         this.estado = CampoMinado.TAPADO; //quando o botao inicia, está tapado
+        this.linha = linha;
+        this.coluna = coluna;
     }
 
     public void setEstado(int estado) {
@@ -36,5 +40,13 @@ public class BotaoCampoMinado extends JButton {
                 setBackground(Color.LIGHT_GRAY);
                 break;
         }
+    }
+
+    public int getLinha() {
+        return linha;
+    }
+
+    public int getColuna() {
+        return coluna;
     }
 }
