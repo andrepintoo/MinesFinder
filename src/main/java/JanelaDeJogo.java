@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class JanelaDeJogo extends JFrame{
     private JPanel painelJogo; // painel do jogo. O nome é definido no modo  Design, em "field name"
@@ -85,8 +82,46 @@ public class JanelaDeJogo extends JFrame{
                     public void mouseExited(MouseEvent e) {
                     }
                 };
+                KeyListener keyListener = new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                    }
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        var botao = (BotaoCampoMinado) e.getSource();
+                        var linha = botao.getLinha();
+                        var coluna = botao.getColuna();
+                        switch (e.getKeyCode()) {
+                            case KeyEvent.VK_LEFT -> btns[linha][--coluna < 0 ? altura - 1 :
+                                    coluna].requestFocus();
+                            case KeyEvent.VK_RIGHT -> btns[linha][(coluna + 1) %
+                                    altura].requestFocus();
+                            case KeyEvent.VK_UP -> btns[--linha < 0 ? largura - 1 :
+                                    linha][coluna].requestFocus();
+                            case KeyEvent.VK_DOWN -> btns[(linha + 1) %
+                                    largura][coluna].requestFocus();
+                            case KeyEvent.VK_M -> {
+                                switch (campoMinado.getEstadoQuadricula(linha, coluna)) {
+                                    case CampoMinado.TAPADO ->
+                                            campoMinado.marcarComoTendoMina(linha, coluna);
+                                    case CampoMinado.MARCADO ->
+                                            campoMinado.marcarComoSuspeita(linha, coluna);
+                                    case CampoMinado.DUVIDA ->
+                                            campoMinado.desmarcarQuadricula(linha, coluna);
+                                }
+                                actualizarEstadoBotoes();
+                            }
+                        }
+                    }
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                };
+
+
 
                 btns[linha][coluna].addMouseListener(mouseListener);
+                btns[linha][coluna].addKeyListener(keyListener);
                 painelJogo.add(btns[linha][coluna]);
             }
         }
