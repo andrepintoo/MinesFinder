@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class JanelaDeJogo extends JFrame{
     private JPanel painelJogo; // painel do jogo. O nome é definido no modo  Design, em "field name"
@@ -50,7 +52,41 @@ public class JanelaDeJogo extends JFrame{
 
                     }
                 });
-                //btns[linha][coluna].addMouseListener(mouseListener);
+                MouseListener mouseListener=new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                    }
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        if (e.getButton() != MouseEvent.BUTTON3) {
+                            return;
+                        }
+                        var botao = (BotaoCampoMinado) e.getSource();
+                        var x = botao.getLinha();
+                        var y = botao.getColuna();
+
+                        var estadoQuadricula = campoMinado.getEstadoQuadricula(x, y);
+                        if (estadoQuadricula == CampoMinado.TAPADO) {
+                            campoMinado.marcarComoTendoMina(x, y);
+                        } else if (estadoQuadricula == CampoMinado.MARCADO) {
+                            campoMinado.marcarComoSuspeita(x, y);
+                        } else if (estadoQuadricula == CampoMinado.DUVIDA) {
+                            campoMinado.desmarcarQuadricula(x, y);
+                        }
+                        actualizarEstadoBotoes();
+                    }
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                    }
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                    }
+                };
+
+                btns[linha][coluna].addMouseListener(mouseListener);
                 painelJogo.add(btns[linha][coluna]);
             }
         }

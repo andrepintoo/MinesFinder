@@ -75,8 +75,9 @@ public class CampoMinado {
         for (var i = Math.max(0, x - 1); i < Math.min(largura, x + 2); ++i) {
             for (var j = Math.max(0, y - 1); j < Math.min(altura, y + 2); ++j) {
 //                revelarQuadricula(i,j);
-                if(estado[i][j] == TAPADO)
+                if(estado[i][j] == TAPADO || estado[i][j] == MARCADO || estado[i][j] == DUVIDA) {
                     estado[i][j] = VAZIO;
+                }
             }
         }
     }
