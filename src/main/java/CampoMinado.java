@@ -71,8 +71,12 @@ public class CampoMinado {
         }
     }
 
-    private void revelarQuadriculasVizinhas(int x, int y){
-
+    private void revelarQuadriculasVizinhas(int x, int y){ //não sei se está bem implementada
+        for (var i = Math.max(0, x - 1); i < Math.min(largura, x + 2); ++i) {
+            for (var j = Math.max(0, y - 1); j < Math.min(altura, y + 2); ++j) {
+                revelarQuadricula(i,j);
+            }
+        }
     }
 
     public long getDuracaoJogo(){
