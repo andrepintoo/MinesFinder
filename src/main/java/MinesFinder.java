@@ -28,7 +28,7 @@ public class MinesFinder extends JFrame {
         btnFacil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var janela = new JanelaDeJogo("Jogo Fácil", new CampoMinado(9,9,10));
+                var janela = new JanelaDeJogo("Jogo Fácil", new CampoMinado(9,9,10), new TabelaRecordes());
                 janela.setVisible(true);
 
             }
@@ -37,7 +37,7 @@ public class MinesFinder extends JFrame {
         btnMedio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var janela = new JanelaDeJogo("Jogo Médio", new CampoMinado(16,16,40));
+                var janela = new JanelaDeJogo("Jogo Médio", new CampoMinado(16,16,40), new TabelaRecordes());
                 janela.setVisible(true);
 
             }
@@ -46,7 +46,7 @@ public class MinesFinder extends JFrame {
         btnDificil.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var janela = new JanelaDeJogo("Jogo Difícil", new CampoMinado(16,30,90));
+                var janela = new JanelaDeJogo("Jogo Difícil", new CampoMinado(16,30,90), new TabelaRecordes());
                 janela.setVisible(true);
 
             }
