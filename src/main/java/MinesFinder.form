@@ -35,7 +35,7 @@
               <text value="Nivel Facil"/>
             </properties>
           </component>
-          <component id="b65f1" class="javax.swing.JLabel">
+          <component id="b65f1" class="javax.swing.JLabel" binding="lblNomeFacil">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -43,7 +43,7 @@
               <text value="Nome Jogador"/>
             </properties>
           </component>
-          <component id="1b91e" class="javax.swing.JLabel">
+          <component id="1b91e" class="javax.swing.JLabel" binding="lblNomeMedio">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -51,7 +51,7 @@
               <text value="Nome Jogador"/>
             </properties>
           </component>
-          <component id="b76ef" class="javax.swing.JLabel">
+          <component id="b76ef" class="javax.swing.JLabel" binding="lblNomeDificil">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -80,7 +80,7 @@
               <text value="Nivel Difícil"/>
             </properties>
           </component>
-          <component id="2d7a3" class="javax.swing.JLabel">
+          <component id="2d7a3" class="javax.swing.JLabel" binding="lblTempoFacil">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -88,7 +88,7 @@
               <text value="1234"/>
             </properties>
           </component>
-          <component id="489ef" class="javax.swing.JLabel">
+          <component id="489ef" class="javax.swing.JLabel" binding="lblTempoMedio">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -96,7 +96,7 @@
               <text value="1234"/>
             </properties>
           </component>
-          <component id="4a683" class="javax.swing.JLabel">
+          <component id="4a683" class="javax.swing.JLabel" binding="lblTempoDificil">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
