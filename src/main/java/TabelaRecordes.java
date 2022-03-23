@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TabelaRecordes {
+public class TabelaRecordes implements Serializable {
     private String nome_jogador;
     private long duracao_jogo;
-    private ArrayList<TabelaRecordesListener> listeners;
+    private transient ArrayList<TabelaRecordesListener> listeners;
 
     public TabelaRecordes() {
         nome_jogador = "Anónimo";
@@ -20,15 +21,23 @@ public class TabelaRecordes {
     }
 
     private void notifyRecordesActualizados() {
-        for (TabelaRecordesListener list:listeners)
-            list.recordesActualizados(this);
+        if(listeners != null) {
+            for (TabelaRecordesListener list : listeners) {
+                list.recordesActualizados(this);
+            }
+        }
     }
 
     public void addTabelaRecordesListener(TabelaRecordesListener list) {
+        if(listeners == null){
+            listeners = new ArrayList<>();
+        }
         listeners.add(list);
     }
     public void removeTabelaRecordesListener(TabelaRecordesListener list) {
-        listeners.remove(list);
+        if(listeners != null){
+            listeners.remove(list);
+        }
     }
 
 

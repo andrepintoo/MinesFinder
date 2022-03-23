@@ -45,11 +45,11 @@ public class JanelaDeJogo extends JFrame{
                             else {
                                 JOptionPane.showMessageDialog(null, "Parabéns. Conseguiu descobrir todas as minas em " +
                                         (campoMinado.getDuracaoJogo() / 1000) + " segundos", "Vitória", JOptionPane.INFORMATION_MESSAGE);
-                            }
-                            boolean novoRecorde = campoMinado.getDuracaoJogo() < recordes.getDuracao_jogo();
-                            if (novoRecorde) {
-                                String nome=JOptionPane.showInputDialog("Introduza o seu nome");
-                                recordes.setRecorde(nome, campoMinado.getDuracaoJogo());
+                                boolean novoRecorde = campoMinado.getDuracaoJogo() < recordes.getDuracao_jogo();
+                                if (novoRecorde) {
+                                    String nome=JOptionPane.showInputDialog("Introduza o seu nome");
+                                    recordes.setRecorde(nome, campoMinado.getDuracaoJogo());
+                                }
                             }
                             setVisible(false);
                         }
