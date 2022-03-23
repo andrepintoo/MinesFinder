@@ -61,9 +61,6 @@ public class MinesFinder extends JFrame {
             }
         });
 
-
-
-
         sairButton.addActionListener(this::sairButtonActionPerformed);
 //        sairButton.addActionListener(new ActionListener() {
 //            @Override
